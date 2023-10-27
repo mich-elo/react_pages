@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 
 import CreditCardIcon from '@mui/icons-material/CreditCard';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 
 export default function CardPaymentForm(){
     const [cardNumber, setCardNumber] = useState('');
@@ -14,11 +15,22 @@ export default function CardPaymentForm(){
 
     const handleCardNumberChange = (e:any) => {
         const input = e.target.value;
-        setCardNumber(input);
+        setCardNumber(formatCardNumber(input));
+    };
 
-        // Check if the input matches the desired pattern
-        const pattern = /^(\d{4}-){3}\d{4}$/;
-        setValid(pattern.test(input));
+    const formatCardNumber = (input:any) => {
+        if(input){
+            // Remove any non-digit characters from the input
+            const digitsOnly = input.replace(/\D/g, '');
+        
+            // Add dashes to the formatted card number
+            const formattedNumber = digitsOnly
+            .match(/.{1,4}/g)
+            .join('-')
+            .slice(0, 19);
+        
+            return formattedNumber;
+        }
     };
 
     return(
@@ -48,7 +60,7 @@ export default function CardPaymentForm(){
                     label="Card Number" 
                     variant="outlined" 
                     inputProps={{ 
-                        maxLength: 16,
+                        maxLength: 19,
                         type: 'text',
                         placeholder: 'XXXX-XXXX-XXXX-XXXX',
                         pattern: '\\d{4}-\\d{4}-\\d{4}-\\d{4}', 
@@ -60,6 +72,17 @@ export default function CardPaymentForm(){
                             <CreditCardIcon sx={{ marginRight:1.5}}/>
                         )
                     }}
+                />
+
+                <TextField
+                    label="Expiry Date"
+                    InputProps={{
+                        startAdornment: (
+                            <EventAvailableIcon sx={{ marginRight:1.5}}/>
+                        ),
+                    }}
+                    variant="outlined"
+                    placeholder="MM/YY"
                 />
             </Box>
         </>
