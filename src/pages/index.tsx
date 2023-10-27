@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import NavigationBar from '@/components/navigation/NavigationBar'
 import PaymentForm from '@/components/payment/PaymentForm'
+import Footer from '@/components/sections/Footer'
+
 export default function Home() {
   return (
     <>
@@ -13,6 +15,7 @@ export default function Home() {
       
       <NavigationBar/>
       <PaymentForm/>
+      <Footer/>
 
     </>
   )

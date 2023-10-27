@@ -3,16 +3,14 @@ import {
     Stack,
     CardMedia,
     Typography,
-    List,
-    ListItem,
-    ListItemButton,
-    Divider
+    Button,
+    ButtonBase 
 } from "@mui/material";
 
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-export default function PaymentMethods(){
+export default function PaymentMethods(props:any){
+    const { setTabValue } = props;
     return(
         <Box
             marginBottom={3}
@@ -35,24 +33,28 @@ export default function PaymentMethods(){
                     imgsrc="/assets/airtel-logo.png"
                     name="Airtel Money"
                     alt="Airtel money logo"
+                    action={ ()=>setTabValue(1)}
                 />
 
                 <PaymentTypeCard
                     imgsrc="/assets/mtn-money-logo.jpg"
                     name="MTN Money"
                     alt="MTM money logo"
+                    action={ ()=>setTabValue(2)}
                 />
 
                 <PaymentTypeCard
                     imgsrc="/assets/zamtel-zambia-logo.png"
                     name="Zamtel Money"
                     alt="ZAMTEL money logo"
+                    action={ ()=>setTabValue(3)}
                 />
 
                 <PaymentTypeCard
                     imgsrc="/assets/visa-and-master-card-logo.jpeg"
                     name="Debit & Credit Cards"
                     alt="visa card logo"
+                    action={ ()=>setTabValue(4)}
                 />
 
             </Stack>
@@ -66,16 +68,19 @@ export default function PaymentMethods(){
 
 
 function PaymentTypeCard(props:any){
-    const { imgsrc, name, alt } = props
+    const { imgsrc, name, alt, action } = props
     return(
-        <Stack
+        <ButtonBase 
+            onClick={()=>{ action() }}
+            component={Stack}
             flexDirection={"row"}
             alignItems={"center"}
             columnGap={3}
             sx={{
+                className: 'my-box-with-ripple',
                 pl:1,
                 pr:1,
-                height:90,
+                height:100,
                 borderRadius:0.5,
                 borderBottom:'1px solid #ebebeb',
                 backgroundColor:"#ffffff",
@@ -124,6 +129,6 @@ function PaymentTypeCard(props:any){
                 <ArrowForwardIosIcon sx={{ fontSize: 15 }} />
             </div>
             
-        </Stack>
+        </ButtonBase >
     )
 }

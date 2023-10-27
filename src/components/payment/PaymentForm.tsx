@@ -1,19 +1,29 @@
+import { useState } from 'react'
 import { 
     Container,
-    Grid,
-    Typography,
-    TextField,
     Box,
-    MenuItem 
+    IconButton,
+    ButtonBase
 } from "@mui/material";
 
 import PaymentMethods from "./PaymentMethods";
 
+// payment forms
+import AirtelPaymentForm from './AirtelPaymentForm';
+import MtnPaymentForm from './MtnPaymentForm';
+import ZamtelPaymentForm from './ZamtelPaymentForm';
+import CardPaymentForm from './CardPaymentForm';
+
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 export default function PaymentForm(){
+    const [ tabValue, setTabValue ] = useState(0)
     return(
         <Container
             sx={{
-                pt:5
+                pt:5,
+                marginBottom:15,
+                height:1,
+                minHeight:'90vh'
             }}
         >
 
@@ -24,59 +34,59 @@ export default function PaymentForm(){
                 maxWidth:700,
             }}>
 
-                <PaymentMethods/>
+                {
+                    (tabValue !== 0)?
+                    <Box
+                    sx={{
+                        marginBottom:5
+                    }}>
+                        <IconButton
+                        onClick={()=> setTabValue(0)}>
+                            <ArrowBackIcon
+                                fontSize='medium'
+                            />
+                        </IconButton>
+                    </Box>
+                    :<></>
+                }
 
 
-                <Typography
-                    component={"h1"}
-                    variant="subtitle1"
-                    fontFamily={"Poppins Medium"}
-                    marginBottom={2}
-                >
-                    Payment Information
-                </Typography>
+                {
+                    (tabValue === 0)?
+                    <PaymentMethods
+                        setTabValue={setTabValue}
+                    />
+                    :<></>
+                }
 
-                <Grid
-                    container
-                    spacing={1}
-                >
-                    {/* <Grid
-                        item
-                        sm={6}
-                        xs={12}
-                    >
-                        <TextField 
-                            fullWidth
-                            select
-                            id="payment-methods" 
-                            label="Payment Method" 
-                            variant="outlined" 
-                        >
-                            {paymentMethods.map((option) => (
-                                <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                                </MenuItem>
-                            ))}    
-                        </TextField>
-                        
-                    </Grid> */}
+                {
+                    (tabValue === 1)?
+                    <AirtelPaymentForm/>
+                    :<></>
+                }
 
-                    <Grid
-                        item
-                        sm={6}
-                        xs={12}
-                    >
+                {
+                    (tabValue === 2)?
+                    <MtnPaymentForm/>
+                    :<></>
+                }
 
-                        <TextField 
-                            fullWidth
-                            id="outlined-basic" 
-                            label="Phone Number" 
-                            variant="outlined" 
-                        />
-                        
-                    </Grid>
+                {
+                    (tabValue === 3)?
+                    <ZamtelPaymentForm/>
+                    :<></>
+                }
 
-                </Grid>
+                {
+                    (tabValue === 4)?
+                    <CardPaymentForm/>
+                    :<></>
+                }
+
+
+                
+
+
             </Box>
             
 
