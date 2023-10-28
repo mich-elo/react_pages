@@ -78,11 +78,11 @@ export default function NavigationBar(props:any) {
                     sx={{
                       color:"#010252",
                       '&:hover':{
-                        cursor:"pointer"
+                        cursor:"pointer",
                       }
                     }}
                   >
-                    Check Out
+                    checkout
                   </Typography>
                 </div>
             
