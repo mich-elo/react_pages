@@ -7,7 +7,10 @@ import {
     Button
 } from "@mui/material";
 
+import { useRouter } from "next/router";
+
 export default function PaymentSuccess(){
+    const router = useRouter()
     return(
         <Container >
 
@@ -57,6 +60,7 @@ export default function PaymentSuccess(){
                         type="button"
                         variant="contained"
                         fullWidth
+                        onClick={()=>router.push("/")}
                     >
                         continue
                     </Button>

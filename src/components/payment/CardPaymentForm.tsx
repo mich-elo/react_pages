@@ -79,7 +79,7 @@ export default function CardPaymentForm(){
 
         onSubmit: async (values) => {
             await stall()
-            router.push("/test")
+            router.push("/success")
         },
 
         validateOnBlur: false, 

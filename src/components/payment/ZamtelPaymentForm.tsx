@@ -33,7 +33,7 @@ export default function ZamtelPaymentForm(){
 
         onSubmit: async (values) => {
             await stall()
-            router.push("/test")
+            router.push("/success")
 
         },
         validateOnBlur: false, // Do not validate on blur

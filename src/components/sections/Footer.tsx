@@ -11,7 +11,7 @@ export default function Footer(){
             height:"100px",
             display:'flex',
             alignItems:'center',
-            backgroundColor:'#f2f2f2'
+            backgroundColor:'#f7f7f7'
         }}>
             <Typography
                 flexGrow={1}
