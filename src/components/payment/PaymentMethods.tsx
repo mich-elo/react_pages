@@ -21,7 +21,7 @@ export default function PaymentMethods(props:any){
                 fontFamily={"Poppins Medium"}
                 marginBottom={2}
             >
-                Payment Method
+                Payment Methods
             </Typography>
 
 
@@ -58,11 +58,8 @@ export default function PaymentMethods(props:any){
                 />
 
             </Stack>
-            
-            
-        
-
         </Box>
+
     )
 }
 

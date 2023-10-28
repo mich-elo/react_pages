@@ -3,9 +3,13 @@ import {
     Container,
     Box,
     IconButton,
-    ButtonBase
+    Stack,
+    Typography
 } from "@mui/material";
 
+import { Link as MUILink } from '@mui/material';
+
+// 
 import PaymentMethods from "./PaymentMethods";
 
 // payment forms
@@ -37,15 +41,32 @@ export default function PaymentForm(){
                 {
                     (tabValue !== 0)?
                     <Box
-                    sx={{
-                        marginBottom:5
-                    }}>
-                        <IconButton
-                        onClick={()=> setTabValue(0)}>
-                            <ArrowBackIcon
-                                fontSize='medium'
-                            />
-                        </IconButton>
+                        component={Stack}
+                        direction={"row"}
+                        alignItems={"center"}
+                        columnGap={1}
+                        marginBottom={5}
+                    >
+                        <div>
+                            <IconButton 
+                                onClick={()=> setTabValue(0)}    
+                            >
+                                <ArrowBackIcon />
+                            </IconButton>
+                        </div>
+
+                        <div>
+                            <Typography>
+                                back
+                            </Typography>
+                        </div>
+                        {/* <MUILink
+                            component="button"
+                            onClick={()=> setTabValue(0)}
+                        >
+                            <ArrowBackIcon fontSize='small' sx={{ marginRight:2 }}/>
+                            <Typography variant="subtitle1">Back to Payment Methods</Typography>
+                        </MUILink> */}
                     </Box>
                     :<></>
                 }
