@@ -21,21 +21,41 @@ import { stall } from '../utils/helpers';
 import PhoneNumberInput from '../general/PhoneNumberInput';
 
 const validationSchema = yup.object({
+    firstName: yup
+    .string()
+    .required('first name is required'),
+
+    lastName: yup
+    .string()
+    .required('last name is required'),
+
+    address: yup
+    .string()
+    .required('address is required'),
+
+    email: yup
+    .string()
+    .required('emil is required'),
+
+    phoneNumber: yup
+    .string()
+    .required('phone number is required'),
+
     cardName: yup
-      .string()
-      .required('card name isrequired'),
+    .string()
+    .required('card name is required'),
     
     cardNumber: yup
-      .string()
-      .required('card number is required'),
+    .string()
+    .required('card number is required'),
 
     expiryDate: yup
-      .string()
-      .required('expiry date is required'),
+    .string()
+    .required('expiry date is required'),
 
     cvv: yup
-      .string()
-      .required('cvv is required')
+    .string()
+    .required('cvv is required')
 });
 
 export default function CardPaymentForm(){
@@ -44,6 +64,11 @@ export default function CardPaymentForm(){
 
     const formik = useFormik({
         initialValues: {
+            firstName:"",
+            lastName:"",
+            address:"",
+            email:"",
+            phoneNumber:"",
             cardName:"",
             cardNumber:"",
             expiryDate:"",
@@ -57,7 +82,7 @@ export default function CardPaymentForm(){
             router.push("/test")
         },
 
-        validateOnBlur: false, // Do not validate on blur
+        validateOnBlur: false, 
         validateOnChange: false, 
     });
 
@@ -108,6 +133,9 @@ export default function CardPaymentForm(){
                                 variant="outlined" 
                                 required
                                 autoComplete='off'
+                                value={formik.values.firstName}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                         </Box>
 
@@ -119,6 +147,9 @@ export default function CardPaymentForm(){
                                 variant="outlined" 
                                 required
                                 autoComplete='off'
+                                value={formik.values.lastName}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                         </Box>
                     </Box>
@@ -130,6 +161,10 @@ export default function CardPaymentForm(){
                         variant="outlined" 
                         required
                         autoComplete='off'  
+                        value={formik.values.address}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        
                     />
 
                     <TextField 
@@ -139,10 +174,17 @@ export default function CardPaymentForm(){
                         variant="outlined" 
                         required
                         autoComplete='off'
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         
                     />
 
-                    <PhoneNumberInput />
+                    <PhoneNumberInput 
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                    />
 
                    
                 </Box>
