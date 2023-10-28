@@ -111,7 +111,18 @@ export default function PaymentForm(){
 
                 </Box>
 
-                <Details/>
+                <Box
+                sx={{
+                    width:1,
+                    maxWidth:{
+                        lg:400,
+                        md:350,
+                        xs:1
+                    },
+                    
+                }}>
+                    <Details/>
+                </Box>
 
             </Stack>
             

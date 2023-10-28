@@ -18,7 +18,7 @@ import HeadingText from '../general/HeadText';
 import { LoadingButton } from '../buttons/LoadingButtons';
 import { useRouter } from 'next/router';
 import { stall } from '../utils/helpers';
-
+import PhoneNumberInput from '../general/PhoneNumberInput';
 
 const validationSchema = yup.object({
     cardName: yup
@@ -72,10 +72,98 @@ export default function CardPaymentForm(){
             <HeadingText text={"Card Payment"} />
 
             <form onSubmit={formik.handleSubmit}>
+
+
+                <Box
+                    component={Stack}
+                    spacing={3}
+                    marginBottom={5}
+                >
+
+                    <Typography
+                        component={"h1"}
+                        variant="subtitle2"
+                        fontFamily={"Poppins Regular"}
+                        sx={{
+                            textTransform:'capitalize'
+                        }}
+                    >
+                        Billing Information
+                    </Typography>
+                    
+
+                    <Box
+                    component={Stack}
+                        direction={"row"}
+                        spacing={2}
+                        sx={{
+                            width:1
+                        }}
+                    >
+                        <Box width={1}>
+                            <TextField 
+                                fullWidth
+                                name="firstName"
+                                label="First Name" 
+                                variant="outlined" 
+                                required
+                                autoComplete='off'
+                            />
+                        </Box>
+
+                        <Box width={1}>
+                            <TextField 
+                                fullWidth
+                                name="lastName"
+                                label="Last Name" 
+                                variant="outlined" 
+                                required
+                                autoComplete='off'
+                            />
+                        </Box>
+                    </Box>
+
+                    <TextField 
+                        fullWidth
+                        name="address"
+                        label="Address Line" 
+                        variant="outlined" 
+                        required
+                        autoComplete='off'  
+                    />
+
+                    <TextField 
+                        fullWidth
+                        name="email"
+                        label="Email" 
+                        variant="outlined" 
+                        required
+                        autoComplete='off'
+                        
+                    />
+
+                    <PhoneNumberInput />
+
+                   
+                </Box>
+
+                
                 <Box
                     component={Stack}
                     spacing={3}
                 >
+
+                    <Typography
+                        component={"h1"}
+                        variant="subtitle2"
+                        fontFamily={"Poppins Regular"}
+                        sx={{
+                            textTransform:'capitalize'
+                        }}
+                    >
+                        Payment Information
+                    </Typography>
+
                     <TextField 
                         fullWidth
                         name="cardName"

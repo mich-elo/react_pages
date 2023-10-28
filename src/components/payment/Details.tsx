@@ -15,6 +15,11 @@ export default function Details(){
     return(
         <Box
         sx={{
+            position:{
+                md:'sticky',
+                xs:"static"
+            },
+            top:10,
             width:1,
             maxWidth:{
                 lg:400,
@@ -25,14 +30,15 @@ export default function Details(){
         }}>
             <Box
             sx={{
-                backgroundColor:"#fcfcfc",
+                backgroundColor:"#f7f7f7",
                 borderRadius:2,
                 pl:2,
                 pr:2,
                 pt:2,
                 pb:3,
                 height:1,
-                minHeight:400
+                maxHeight:400,
+                overflowY:'auto'
             }}>
 
                 <Typography
@@ -83,23 +89,21 @@ function DetailsData(props:any){
     const { description, value } = props;
     return(
         <Stack
-            direction={"row"}
-            alignItems={"center"}
+            direction={"column"}
+            justifyContent={"center"}
             sx={{
-                height:60,
+                height:80,
                 borderBottom:'1px solid #ebebeb',
             }}
         >
             <Box
-                sx={{
-                    flexGrow:1
-                }}
             >
                 <Typography
                     component={"p"}
                     variant="subtitle1"
                     fontFamily={"Poppins Medium"}
-                    fontSize={14}
+                    fontSize={15}
+                    width={150}
                 >
                     { description }
                 </Typography>
@@ -108,7 +112,7 @@ function DetailsData(props:any){
                 <Typography
                     component={"p"}
                     variant="subtitle1"
-                    fontSize={14}
+                    fontSize={12}
                 >
                     { value }
                 </Typography>
@@ -133,5 +137,34 @@ const DETAILS_DATA = [
     {
         description:"Reference",
         value:"653d0a0068ca7"
-    }
+    },
+    {
+        description:"Names",
+        value:"Wankunda Simuchimba"
+    },
+    {
+        description:"Email",
+        value:"wankundasimuchimba@yahoo.com"
+    },
+    {
+        description:"Phone ",
+        value:"260978130250"
+    },
+    {
+        description:"Address ",
+        value:"11A Mwaleshi Road, Olympia Park, Lusaka, Zambia"
+    },
+    {
+        description:"Price ",
+        value:"ZMW 1"
+    },
+    {
+        description:"Charges ",
+        value:"ZMW 0.02"
+    },
+    {
+        description:"Order Total ",
+        value:"ZMW 1.02"
+    },
+    
 ]
