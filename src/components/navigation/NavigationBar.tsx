@@ -70,44 +70,26 @@ export default function NavigationBar(props:any) {
                 display:'flex',
                 flexGrow: 1
               }}>
-                <Box>
-                  <Link href="/">
-                    <Typography>
-                      Check Out
-                    </Typography>
-                  </Link>
-                </Box>
-                
+                <div>
+                  <Typography
+                    component={"h2"}
+                    fontFamily={"Poppins Bold"}
+                    variant='h6'
+                    sx={{
+                      color:"#010252",
+                      '&:hover':{
+                        cursor:"pointer"
+                      }
+                    }}
+                  >
+                    Check Out
+                  </Typography>
+                </div>
+            
               </Box>
 
               <div>
-                <Box
-                sx={{
-                  display:{
-                    md:'flex',
-                    sm:'none',
-                    xs:'none'
-                  }
-                }}>
-                  <Stack spacing={3} direction="row">
-                    <CustomMuiLink>
-                      <Link href="/">Home</Link>
-                    </CustomMuiLink>
-                
-                  </Stack>
-                </Box>
-                <IconButton 
-                aria-label="menu"
-                sx={{
-                  display:{
-                    md:'none',
-                    sm:'block',
-                    xs:'block'
-                  }
-                }}
-                onClick={()=>{
-                  setOpenDrawer(!openDrawer)
-                }}>
+                <IconButton>
                   <MenuIcon />
                 </IconButton>
               </div>

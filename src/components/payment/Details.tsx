@@ -36,9 +36,6 @@ export default function Details(){
                 pr:2,
                 pt:2,
                 pb:3,
-                height:1,
-                maxHeight:400,
-                overflowY:'auto'
             }}>
 
                 <Typography
@@ -55,6 +52,9 @@ export default function Details(){
                     sx={{
                         flexGrow:1,
                         marginBottom:5,
+                        height:1,
+                        maxHeight:400,
+                        overflowY:'auto'
                     }}
                 >
                     {

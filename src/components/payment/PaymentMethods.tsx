@@ -114,11 +114,19 @@ function PaymentTypeCard(props:any){
 
             <Box
             sx={{
-                flexGrow:1
+                flexGrow:1,
             }}>
                 <Typography
                     component={"p"}
                     variant="subtitle1"
+                    sx={{
+                        width:1,
+                        minWidth:{
+                            sm:1,
+                            xs:150
+                        },
+                        wordWrap:"break-word"
+                    }}
                 >
                     { name }
                 </Typography>
