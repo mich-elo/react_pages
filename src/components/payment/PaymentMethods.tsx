@@ -13,13 +13,19 @@ export default function PaymentMethods(props:any){
     const { setTabValue } = props;
     return(
         <Box
-            marginBottom={3}
+            sx={{
+                borderRadius:2,
+                overflow:'hodden',
+            }}
         >
             <Typography
                 component={"h1"}
-                variant="subtitle1"
+                variant="h6"
                 fontFamily={"Poppins Medium"}
                 marginBottom={2}
+                sx={{
+                    textTransform:'uppercase'
+                }}
             >
                 Payment Methods
             </Typography>
@@ -34,6 +40,7 @@ export default function PaymentMethods(props:any){
                     name="Airtel Money"
                     alt="Airtel money logo"
                     action={ ()=>setTabValue(1)}
+                    border={true}
                 />
 
                 <PaymentTypeCard
@@ -41,6 +48,7 @@ export default function PaymentMethods(props:any){
                     name="MTN Money"
                     alt="MTM money logo"
                     action={ ()=>setTabValue(2)}
+                    border={true}
                 />
 
                 <PaymentTypeCard
@@ -48,6 +56,7 @@ export default function PaymentMethods(props:any){
                     name="Zamtel Money"
                     alt="ZAMTEL money logo"
                     action={ ()=>setTabValue(3)}
+                    border={true}
                 />
 
                 <PaymentTypeCard
@@ -65,7 +74,7 @@ export default function PaymentMethods(props:any){
 
 
 function PaymentTypeCard(props:any){
-    const { imgsrc, name, alt, action } = props
+    const { imgsrc, name, alt, action, border } = props
     return(
         <ButtonBase 
             onClick={()=>{ action() }}
@@ -79,7 +88,7 @@ function PaymentTypeCard(props:any){
                 pr:1,
                 height:100,
                 borderRadius:0.5,
-                borderBottom:'1px solid #ebebeb',
+                borderBottom:(border)?'1px solid #ebebeb':'',
                 backgroundColor:"#ffffff",
                 "&:hover": {
                     cursor:'pointer',

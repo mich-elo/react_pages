@@ -14,7 +14,11 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { Dayjs } from 'dayjs';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import HeadingText from './HeadText';
+import HeadingText from '../general/HeadText';
+import { LoadingButton } from '../buttons/LoadingButtons';
+import { useRouter } from 'next/router';
+import { stall } from '../utils/helpers';
+
 
 const validationSchema = yup.object({
     cardName: yup
@@ -35,6 +39,9 @@ const validationSchema = yup.object({
 });
 
 export default function CardPaymentForm(){
+
+    const router = useRouter();
+
     const formik = useFormik({
         initialValues: {
             cardName:"",
@@ -46,7 +53,8 @@ export default function CardPaymentForm(){
         validationSchema: validationSchema,
 
         onSubmit: async (values) => {
-            console.log(values)
+            await stall()
+            router.push("/test")
         },
 
         validateOnBlur: false, // Do not validate on blur
@@ -94,9 +102,6 @@ export default function CardPaymentForm(){
                             pattern: '\\d{4}-\\d{4}-\\d{4}-\\d{4}', 
                             value: formik.values.cardNumber,
                             onChange: handleChangeCardNumber
-                            // onChange: (value) => {
-                            //     formik.setFieldValue("cardNumber", formatCardNumber(value.toString()), true)
-                            // },
                         }}
                         InputProps={{
                             startAdornment: (
@@ -155,12 +160,10 @@ export default function CardPaymentForm(){
                     <Box sx={{ display:'flex' }}>
                         <Box sx={{ flexGrow:1 }}/>
                         <div>
-                            <Button
-                                variant='contained'
-                                type='submit'
-                            > 
-                                Make Payment 
-                            </Button>
+                            <LoadingButton
+                                isLoading={formik.isSubmitting}
+                                text="Make Payment"
+                            />
                         </div>
                     </Box>
                 </Box>

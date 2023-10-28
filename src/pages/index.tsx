@@ -2,7 +2,7 @@ import Head from 'next/head'
 import NavigationBar from '@/components/navigation/NavigationBar'
 import PaymentForm from '@/components/payment/PaymentForm'
 import Footer from '@/components/sections/Footer'
-
+import { Box } from '@mui/material'
 export default function Home() {
   return (
     <>
@@ -14,7 +14,16 @@ export default function Home() {
       </Head>
       
       <NavigationBar/>
-      <PaymentForm/>
+      
+      <Box
+      sx={{
+        height:1,
+        minHeight:'calc(100vh - 200px)',
+        marginBottom:10
+      }}>
+        <PaymentForm/>
+      </Box>
+
       <Footer/>
 
     </>

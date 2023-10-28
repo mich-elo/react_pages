@@ -5,7 +5,7 @@ import {
     Box,
     Button
 } from "@mui/material";
-import HeadingText from "./HeadText";
+import HeadingText from "../general/HeadText";
 
 export default function MtnPaymentForm(){
     return(

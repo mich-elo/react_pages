@@ -8,7 +8,7 @@ export default function Footer(){
         <Box
         sx={{
             width:1,
-            height:150,
+            height:"100px",
             display:'flex',
             alignItems:'center',
             backgroundColor:'#f2f2f2'

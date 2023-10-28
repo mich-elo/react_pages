@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { 
     Container,
     Box,
@@ -17,98 +17,181 @@ import AirtelPaymentForm from './AirtelPaymentForm';
 import MtnPaymentForm from './MtnPaymentForm';
 import ZamtelPaymentForm from './ZamtelPaymentForm';
 import CardPaymentForm from './CardPaymentForm';
+import Details from './Details';
 
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useRouter } from 'next/router';
+import { BackArrowButtom } from '../buttons/ActionButtons';
+
 export default function PaymentForm(){
+    const router = useRouter();
+
     const [ tabValue, setTabValue ] = useState(0)
+    const [ show, setShow] = useState(false)
+
+    useEffect(()=>{
+        if(router.isReady){
+            switch (router.query.pid) {
+                case "34753234234":
+                    console.log("Hello pid")
+                    setShow(true)
+                    break;
+                    
+                default:
+                    setShow(false);
+            }
+
+        }
+
+    },[router])
+
     return(
         <Container
             sx={{
                 pt:5,
-                marginBottom:15,
-                height:1,
-                minHeight:'90vh'
             }}
         >
 
+            <Stack
+                direction={"row"}
+                spacing={5}
+                sx={{
+                    display:{
+                        md:"flex",
+                        xs:"none"
+                    }
+                }}
+            >
+
+                <Box
+                sx={{
+                    width:1,
+                }}>
+
+                    {
+                        (tabValue !== 0)?
+                        <BackArrowButtom
+                            text="back" 
+                            handleOnclick={()=> setTabValue(0)} 
+                        />
+                        :<></>
+                    }
+
+
+                    {
+                        (tabValue === 0)?
+                        <PaymentMethods
+                            setTabValue={setTabValue}
+                        />
+                        :<></>
+                    }
+
+                    {
+                        (tabValue === 1)?
+                        <AirtelPaymentForm/>
+                        :<></>
+                    }
+
+                    {
+                        (tabValue === 2)?
+                        <MtnPaymentForm/>
+                        :<></>
+                    }
+
+                    {
+                        (tabValue === 3)?
+                        <ZamtelPaymentForm/>
+                        :<></>
+                    }
+
+                    {
+                        (tabValue === 4)?
+                        <CardPaymentForm/>
+                        :<></>
+                    }
+
+                </Box>
+
+                <Details/>
+
+            </Stack>
             
+            
+            {/* For mobile view */}
+
             <Box
-            sx={{
-                width:1,
-                maxWidth:700,
-            }}>
+                sx={{
+                    width:1,
+                    display:{
+                        md:'none',
+                        xs:'block'
+                    }
+                }}
+            >
 
                 {
-                    (tabValue !== 0)?
+                    (show)?
                     <Box
-                        component={Stack}
-                        direction={"row"}
-                        alignItems={"center"}
-                        columnGap={1}
-                        marginBottom={5}
-                    >
-                        <div>
-                            <IconButton 
-                                onClick={()=> setTabValue(0)}    
-                            >
-                                <ArrowBackIcon />
-                            </IconButton>
-                        </div>
+                    sx={{
+                        width:1,
+                    }}>
 
-                        <div>
-                            <Typography>
-                                back
-                            </Typography>
-                        </div>
-                        {/* <MUILink
-                            component="button"
-                            onClick={()=> setTabValue(0)}
-                        >
-                            <ArrowBackIcon fontSize='small' sx={{ marginRight:2 }}/>
-                            <Typography variant="subtitle1">Back to Payment Methods</Typography>
-                        </MUILink> */}
+                        {
+                            (tabValue !== 0)?
+                            <BackArrowButtom
+                                text="back" 
+                                handleOnclick={()=> setTabValue(0)} 
+                            />
+                            :<></>
+                        }
+
+
+                        {
+                            (tabValue === 0)?
+                            <>
+                                <BackArrowButtom
+                                    text="Order Summary" 
+                                    handleOnclick={()=> router.back()} 
+                                />
+                                
+                                <PaymentMethods
+                                    setTabValue={setTabValue}
+                                />
+                            </>
+                            :<></>
+                        }
+
+                        {
+                            (tabValue === 1)?
+                            <AirtelPaymentForm/>
+                            :<></>
+                        }
+
+                        {
+                            (tabValue === 2)?
+                            <MtnPaymentForm/>
+                            :<></>
+                        }
+
+                        {
+                            (tabValue === 3)?
+                            <ZamtelPaymentForm/>
+                            :<></>
+                        }
+
+                        {
+                            (tabValue === 4)?
+                            <CardPaymentForm/>
+                            :<></>
+                        }
+
                     </Box>
-                    :<></>
+                    :
+                    <Details/>
                 }
-
-
-                {
-                    (tabValue === 0)?
-                    <PaymentMethods
-                        setTabValue={setTabValue}
-                    />
-                    :<></>
-                }
-
-                {
-                    (tabValue === 1)?
-                    <AirtelPaymentForm/>
-                    :<></>
-                }
-
-                {
-                    (tabValue === 2)?
-                    <MtnPaymentForm/>
-                    :<></>
-                }
-
-                {
-                    (tabValue === 3)?
-                    <ZamtelPaymentForm/>
-                    :<></>
-                }
-
-                {
-                    (tabValue === 4)?
-                    <CardPaymentForm/>
-                    :<></>
-                }
-
-
-                
 
 
             </Box>
+            
             
 
         </Container>
@@ -116,21 +199,3 @@ export default function PaymentForm(){
 }
 
 
-const paymentMethods = [
-    {
-      value: 'USD',
-      label: '$',
-    },
-    {
-      value: 'EUR',
-      label: '€',
-    },
-    {
-      value: 'BTC',
-      label: '฿',
-    },
-    {
-      value: 'JPY',
-      label: '¥',
-    },
-  ];

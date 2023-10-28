@@ -4,25 +4,26 @@ import {
     Stack,
     Box,
     Button,
-    FormControl,
-    InputLabel,
-    FormHelperText,
     InputAdornment,
-    OutlinedInput
+    OutlinedInput,
+    CircularProgress
 } from "@mui/material";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import HeadingText from "./HeadText";
 
-const phoneRegExp = /^(097[0-9]{7})$/;
-const validationSchema = yup.object({
-    phoneNumber: yup
-      .string()
-      .matches(phoneRegExp, 'Invalid Phone Number, example: 0971234567')
-      .required('Phone number is required')
-});
+
+// 
+import HeadingText from "../general/HeadText";
+
+// 
+import { useRouter } from "next/router";
+
+// 
+import { stall } from "../utils/helpers";
+import { LoadingButton } from "../buttons/LoadingButtons";
 
 export default function AirtelPaymentForm(){
+    const router = useRouter();
 
     const formik = useFormik({
         initialValues: {
@@ -31,7 +32,9 @@ export default function AirtelPaymentForm(){
         validationSchema: validationSchema,
 
         onSubmit: async (values) => {
-            console.log(values.phoneNumber)
+            await stall()
+            router.push("/test")
+
         },
         validateOnBlur: false, // Do not validate on blur
         validateOnChange: false, 
@@ -67,12 +70,10 @@ export default function AirtelPaymentForm(){
                     <Box sx={{ display:'flex' }}>
                         <Box sx={{ flexGrow:1 }}/>
                         <div>
-                            <Button
-                            type="submit"
-                                variant='contained'
-                            > 
-                                Make Payment 
-                            </Button>
+                            <LoadingButton
+                                isLoading={formik.isSubmitting}
+                                text="Make Payment"
+                            />
                         </div>
                     </Box>
                 </Box>
@@ -81,3 +82,12 @@ export default function AirtelPaymentForm(){
         </>
     )
 }
+
+// 
+const phoneRegExp = /^(97[0-9]{7})$/;
+const validationSchema = yup.object({
+    phoneNumber: yup
+      .string()
+      .matches(phoneRegExp, 'Invalid Phone Number, example: 0971234567')
+      .required('Phone number is required')
+});

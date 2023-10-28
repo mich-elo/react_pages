@@ -5,9 +5,12 @@ export default function HeadingText(props:any){
     return(
         <Typography
             component={"h1"}
-            variant="h5"
-            fontFamily={"Poppins Regular"}
-            marginBottom={3}
+            variant="subtitle1"
+            fontFamily={"Poppins Medium"}
+            sx={{
+                textTransform:'uppercase',
+                marginBottom:2
+            }}
         >
             { text }
         </Typography>
