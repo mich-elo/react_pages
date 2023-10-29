@@ -18,29 +18,8 @@ import { Link as MUILink } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
 export default function NavigationBar(props:any) {
-    const { writeOption } = props;
     const router = useRouter();
-    const [onScroll, SetOnScroll] = useState(false);
-    const [openDrawer, setOpenDrawer] = useState(false);
-
-    const listenScrollEvent = (event:any) => {
-      if (window.scrollY < 1) {
-        SetOnScroll(false)
-      } else {
-        SetOnScroll(true)
-      } 
-    }
-
-    useEffect(() => {
-      window.addEventListener('scroll', listenScrollEvent);
-
-      return () =>
-          window.removeEventListener('scroll', listenScrollEvent);
-    }, [onScroll]);
-
-    useEffect(()=>{ setOpenDrawer(false) },[])
-
-    // #002538
+   
     return (
       <>
         <Box 
@@ -71,19 +50,19 @@ export default function NavigationBar(props:any) {
                 flexGrow: 1
               }}>
                 <div>
-                  <Typography
-                    component={"h2"}
-                    fontFamily={"Poppins Bold"}
-                    variant='h6'
-                    sx={{
-                      color:"#010252",
-                      '&:hover':{
-                        cursor:"pointer",
-                      }
-                    }}
-                  >
-                    checkout
-                  </Typography>
+                  <Link href="/">
+                    <Image
+                      alt=""
+                      src="/assets/wirepick_logo.png"
+                      width={100}
+                      height={10}
+                      style={{
+                      width:'100%',
+                      height:'100%',
+                      objectFit:'contain',
+                      padding:5
+                    }}/>
+                  </Link>
                 </div>
             
               </Box>
@@ -98,20 +77,4 @@ export default function NavigationBar(props:any) {
       </>
     );
 }
-
-
-
-function CustomMuiLink(props:any){
-    return(
-      <MUILink underline="hover" component="button" 
-      sx={{
-        fontFamily:'Poppins Regular',
-        fontSize:15,
-        color:grey[700],
-      }}>
-        {props.children}
-      </MUILink>
-    )
-}
-
 

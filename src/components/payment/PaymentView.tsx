@@ -22,7 +22,7 @@ import Details from './Details';
 import { useRouter } from 'next/router';
 import { BackArrowButtom } from '../buttons/ActionButtons';
 
-export default function PaymentForm(){
+export default function PaymentView(){
     const router = useRouter();
 
     const [ tabValue, setTabValue ] = useState(0)
@@ -32,7 +32,6 @@ export default function PaymentForm(){
         if(router.isReady){
             switch (router.query.pid) {
                 case "34753234234":
-                    console.log("Hello pid")
                     setShow(true)
                     break;
                     

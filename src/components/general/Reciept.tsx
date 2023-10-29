@@ -172,11 +172,14 @@ function MakePdf(props:any){
     const printRef = useRef<HTMLDivElement|null>(null);
 
     const handleDownload = async () => {
+        
         const element = printRef.current!
-        const canvas = await html2canvas(element); // Increase scale for higher quality
+        const canvas = await html2canvas(element,{
+            scale: 1, 
+        });
         const data = canvas.toDataURL('image/png');
 
-        const pdf = new jsPDF('p','mm',[297, 210]); // Set PDF to A4 size
+        const pdf = new jsPDF('p','mm',[297, 210]); 
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
@@ -200,7 +203,7 @@ function MakePdf(props:any){
                     sx={{ 
                         width:1, 
                         maxWidth:500, 
-                        borderRadius:2 
+                        borderRadius:2,
                     }}
                 >
                     <Stack
@@ -208,7 +211,7 @@ function MakePdf(props:any){
                         justifyContent={"center"}
                         sx={{
                             width:1,
-                            backgroundColor:"#f7f7f7",
+                            // backgroundColor:"#f7f7f7",
                             borderRadius:1,
                             pr:2,
                             pl:2,

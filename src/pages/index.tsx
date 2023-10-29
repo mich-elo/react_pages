@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import NavigationBar from '@/components/navigation/NavigationBar'
-import PaymentForm from '@/components/payment/PaymentForm'
+import PaymentForm from '@/components/payment/PaymentView'
 import Footer from '@/components/sections/Footer'
 import { Box } from '@mui/material'
 export default function Home() {

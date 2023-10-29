@@ -11,13 +11,16 @@ export default function Footer(){
             height:"100px",
             display:'flex',
             alignItems:'center',
-            backgroundColor:'#f7f7f7'
+            backgroundColor:'#2F65A1'
         }}>
             <Typography
                 flexGrow={1}
                 textAlign={"center"}
+                sx={{
+                    color:'white'
+                }}
             >
-                copyright@2023
+                wirepick zambia @2023
             </Typography>
         </Box>
     )
