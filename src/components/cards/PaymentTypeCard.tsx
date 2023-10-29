@@ -42,6 +42,7 @@ export default function PaymentTypeCard(props:any){
                 <Typography
                     component={"p"}
                     variant="subtitle1"
+                    fontFamily={"Poppins Medium"}
                     sx={{
                         width:1,
                         minWidth:{

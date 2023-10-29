@@ -1,0 +1,46 @@
+[
+    {
+        "description":"Code",
+        "value":"TF589"
+    },
+    {
+        "description":"Name",
+        "value":"Test Ticket"
+    },
+    {
+        "description":"Description",
+        "value":"Test Ticket Purchase"
+    },
+    {
+        "description":"Reference",
+        "value":"653d0a0068ca7"
+    },
+    {
+        "description":"Names",
+        "value":"Wankunda Simuchimba"
+    },
+    {
+        "description":"Email",
+        "value":"wankundasimuchimba@yahoo.com"
+    },
+    {
+        "description":"Phone ",
+        "value":"260978130250"
+    },
+    {
+        "description":"Address ",
+        "value":"11A Mwaleshi Road, Olympia Park, Lusaka, Zambia"
+    },
+    {
+        "description":"Price ",
+        "value":"ZMW 1"
+    },
+    {
+        "description":"Charges ",
+        "value":"ZMW 0.02"
+    },
+    {
+        "description":"Order Total ",
+        "value":"ZMW 1.02"
+    }
+]

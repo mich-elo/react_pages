@@ -3,19 +3,10 @@ import {
   Box, 
   AppBar, 
   Toolbar, 
-  IconButton,
-  Avatar,
-  Stack,
-  Chip,
-  Typography,
-  Container
 } from '@mui/material';
 import Link from 'next/link'
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Link as MUILink } from '@mui/material';
-import { grey } from '@mui/material/colors';
 
 export default function NavigationBar(props:any) {
     const router = useRouter();

@@ -49,7 +49,7 @@ export default function CardSelection(){
                     component="img"
                     height={50}
                     image={"/assets/american_express.png"}
-                    alt="ZAMTEL money logo"
+                    alt="american express logo"
                     sx={{
                         objectFit:'contain',
                     }}
@@ -63,7 +63,7 @@ export default function CardSelection(){
                     component="img"
                     height={50}
                     image={"/assets/visa-card-logo.png"}
-                    alt="ZAMTEL money logo"
+                    alt="visa money logo"
                     sx={{
                         objectFit:'contain',
                     }}

@@ -8,6 +8,10 @@ import {
 } from "@mui/material";
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import DownloadIcon from '@mui/icons-material/Download';
+
+// 
+import { green, blueGrey, grey } from '@mui/material/colors';
 
 export function ContinueButton(props:any){
     const { text, handleOnclick } = props;
@@ -60,6 +64,45 @@ export function BackArrowButtom(props:any){
                     { text }
                 </Typography>
             </div>
+        </Box>
+    )
+}
+
+
+export function PdfDownloadButton(props:any){
+    const { onClickHandler } = props;
+    return(
+        <Box
+        sx={{
+            width:1, 
+            maxWidth:700, 
+            display:'flex',
+            flexDirection:'column',
+            alignItems:'center',
+            pt:5,
+            pb:5
+        }}>
+            <div>
+                <IconButton
+                    type="button"
+                    onClick={onClickHandler}
+                    sx={{
+                        backgroundColor:`${grey[500]}`,
+                        marginBottom:1
+                    }}
+                >
+                    <DownloadIcon sx={{ fontSize:30 }}/>
+                </IconButton>     
+            </div>   
+            <div>
+                <Typography
+                    component={"p"}
+                    variant="subtitle1"
+                    fontFamily={"Poppins Medium"}
+                >
+                    Download Receipt
+                </Typography>    
+            </div> 
         </Box>
     )
 }

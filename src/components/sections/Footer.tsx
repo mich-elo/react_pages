@@ -20,7 +20,7 @@ export default function Footer(){
                     color:'white'
                 }}
             >
-                wirepick zambia @2023
+                wirepickzambia@2023
             </Typography>
         </Box>
     )
