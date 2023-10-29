@@ -19,7 +19,7 @@ export default function Details(){
                 md:'sticky',
                 xs:"static"
             },
-            top:10,
+            top:40,
             width:1,
             maxWidth:{
                 lg:400,

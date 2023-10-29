@@ -20,8 +20,8 @@ export default function Test() {
         <Box
         sx={{
             height:1,
-            minHeight:'calc(100vh - 150px)',
-            // marginBottom:10
+            minHeight:'calc(100vh - 200px)',
+            marginBottom:10
         }}>
             <PaymentSuccess/>
         </Box>

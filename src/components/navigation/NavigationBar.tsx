@@ -88,12 +88,6 @@ export default function NavigationBar(props:any) {
             
               </Box>
 
-              <div>
-                <IconButton>
-                  <MenuIcon />
-                </IconButton>
-              </div>
-
             </Toolbar>
             
           </AppBar>

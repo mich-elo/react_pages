@@ -1,35 +1,34 @@
-import React from "react";
+import {useState, useRef} from "react";
 import { 
     Container,
     Stack,
     CardMedia,
     Typography,
-    Button
+    Button,
+    Box
 } from "@mui/material";
 
 import { useRouter } from "next/router";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import Receipt from "../general/Reciept";
+import { green } from '@mui/material/colors';
 
 export default function PaymentSuccess(){
     const router = useRouter()
+    
+
     return(
-        <Container >
+        <Container sx={{ pt:3 }}>
 
             <Stack
-                rowGap={5}
                 alignItems={"center"}
-                justifyContent={"center"}
-                sx={{
-                    height:420
-                }}
+                marginBottom={5}
             >
                 <div>
-                    <CardMedia
-                        component={"img"}
-                        image="/assets/success-player-multimedia-svgrepo-com.svg"
-                        title="success icon"
+                    <CheckCircleOutlineIcon
                         sx={{
-                            height:50,
-                            objectFit:"contain",
+                            fontSize:40,
+                            color:green[500]
                         }}
                     />
                 </div>
@@ -37,10 +36,8 @@ export default function PaymentSuccess(){
                 <div>
                     <Typography
                         component={"p"}
-                        fontFamily={"Poppins Medium"}
-                        variant="h6"
+                        variant="subtitle1"
                         textAlign={"center"}
-                        // gutterBottom
                     >
                         Payment Successful
                     </Typography>
@@ -50,26 +47,13 @@ export default function PaymentSuccess(){
                         variant="subtitle1"
                         textAlign={"center"}
                     >
-                        Your payment has been processed successfully.
+                        Keep a copy of the receipt for your records.
                     </Typography>
                 </div>
-
-                <div>
-
-                    <Button
-                        type="button"
-                        variant="contained"
-                        fullWidth
-                        onClick={()=>router.push("/")}
-                    >
-                        continue
-                    </Button>
-                    
-                </div>
-
-
-
             </Stack>
+            
+            <Receipt/>
+            
         </Container>
     )
 }
