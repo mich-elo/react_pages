@@ -10,8 +10,13 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DownloadIcon from '@mui/icons-material/Download';
 
-// 
-import { green, blueGrey, grey } from '@mui/material/colors';
+
+declare module '@mui/material/Button' {
+    interface ButtonPropsColorOverrides {
+      custom: true;
+      formColor: true;
+    }
+}
 
 export function ContinueButton(props:any){
     const { text, handleOnclick } = props;
@@ -19,7 +24,7 @@ export function ContinueButton(props:any){
         <Button
             type="submit"
             variant='contained'
-            size="small"
+            color="formColor"
             sx={{
                 width:1,
                 height:40,
@@ -75,34 +80,119 @@ export function PdfDownloadButton(props:any){
         <Box
         sx={{
             width:1, 
-            maxWidth:700, 
             display:'flex',
             flexDirection:'column',
             alignItems:'center',
-            pt:5,
-            pb:5
+            pb:2,
+            pt:2
         }}>
+             
             <div>
-                <IconButton
-                    type="button"
+                <Button 
+                    color="formColor" 
+                    variant="outlined" 
+                    endIcon={<DownloadIcon />}
                     onClick={onClickHandler}
-                    sx={{
-                        backgroundColor:`${grey[500]}`,
-                        marginBottom:1
-                    }}
                 >
-                    <DownloadIcon sx={{ fontSize:30 }}/>
-                </IconButton>     
-            </div>   
-            <div>
-                <Typography
-                    component={"p"}
-                    variant="subtitle1"
-                    fontFamily={"Poppins Medium"}
-                >
-                    Download Receipt
-                </Typography>    
+                    download receipt
+                </Button>  
             </div> 
         </Box>
+    )
+}
+
+
+
+
+export function FinishButton(props:any){
+    const { text, handleOnclick } = props;
+    return(
+        <Box
+        sx={{
+            width:1, 
+            display:'flex',
+            flexDirection:'column',
+            alignItems:'center',
+        }}>
+            <div>
+                <Button
+                    color="formColor"
+                    type="submit"
+                    variant='contained'
+                    size="small"
+                    sx={{
+                        borderRadius:10,
+                        width:150,
+                        height:35,
+                        fontFamily:"Poppins Medium"
+                    }}
+                    onClick={ ()=> { handleOnclick() }}
+                > 
+                    { text }
+                </Button>
+            </div>
+
+        </Box>
+        
+    )
+}
+
+export function LoadingButton(props:any){
+    const { isLoading, text } = props;
+    return(
+        <Button
+            color="formColor"
+            type="submit"
+            variant='contained'
+            size="small"
+            sx={{
+                width:150,
+                height:40
+            }}
+        > 
+            {
+                (isLoading)?
+                <Box sx={{ display: 'flex' }}>
+                    <CircularProgress 
+                        size={20}
+                        sx={{
+                            color:"white"
+                        }}
+                    />
+                </Box>
+                :<Typography>{ text }</Typography>
+            }
+            
+        </Button>
+    )
+}
+
+export function PayButton(props:any){
+    const { isLoading } = props;
+    return(
+        <Button
+            color="formColor"
+            type="submit"
+            variant='contained'
+            size="small"
+            sx={{
+                width:150,
+                height:40
+            }}
+        > 
+            {
+                (isLoading)?
+                <Box sx={{ display: 'flex' }}>
+                    <CircularProgress 
+                        size={20}
+                        sx={{
+                            color:"white"
+                        }}
+                    />
+                </Box>
+                :<Typography>Pay</Typography>
+            }
+            
+        </Button>
     )
 }

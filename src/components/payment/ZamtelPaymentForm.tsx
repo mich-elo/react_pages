@@ -20,7 +20,8 @@ import { useRouter } from "next/router";
 
 // 
 import { stall } from "../utils/helpers";
-import { LoadingButton } from "../buttons/LoadingButtons";
+import { PayButton } from "../buttons/ActionButtons";
+import PhoneNumberInput from "../general/PhoneNumberInput";
 
 export default function ZamtelPaymentForm(){
     const router = useRouter();
@@ -49,12 +50,7 @@ export default function ZamtelPaymentForm(){
             <form onSubmit={formik.handleSubmit}>
 
                 <Box component={Stack} spacing={3}>
-                    <TextField 
-                        fullWidth
-                        label="Phone Number" 
-                        name="phoneNumber"
-                        variant="outlined" 
-                        autoComplete="off"
+                    <PhoneNumberInput 
                         InputProps={{
                             startAdornment: <InputAdornment position="start">+260</InputAdornment>,
                         }}
@@ -70,9 +66,8 @@ export default function ZamtelPaymentForm(){
                     <Box sx={{ display:'flex' }}>
                         <Box sx={{ flexGrow:1 }}/>
                         <div>
-                            <LoadingButton
+                            <PayButton
                                 isLoading={formik.isSubmitting}
-                                text="Make Payment"
                             />
                         </div>
                     </Box>

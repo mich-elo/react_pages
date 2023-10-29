@@ -115,7 +115,8 @@ function ReceiptHeading(){
         sx={{
             width:1,
             height:50,
-            backgroundColor:blueGrey[500],
+            backgroundColor:"#2f64a1",
+            // backgroundColor:blueGrey[500],
             display:'flex',
             alignItems:'center',
             textAlign:'center',

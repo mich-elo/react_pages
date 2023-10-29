@@ -57,6 +57,18 @@ export default function Details(){
                         overflowY:'auto'
                     }}
                 >
+                    <PriceHeading
+                        description={"Price"}
+                        value={"ZMW 1"}
+                    />
+                    <PriceHeading
+                        description={"Charges"}
+                        value={"ZMW 0.02"}
+                    />
+                    <PriceHeading
+                        description={"Order Total"}
+                        value={"ZMW 1.02"}
+                    />
                     {
                         DETAILS_DATA.map((d:any, i:any)=>{
                             return(
@@ -82,6 +94,46 @@ export default function Details(){
                 />
             </Box>
         </Box>
+    )
+}
+
+function PriceHeading(props:any){
+    const { description, value } = props;
+    return(
+        <Stack
+            direction={"column"}
+            justifyContent={"center"}
+            sx={{
+                height:80,
+                borderBottom:'1px solid #ebebeb',
+            }}
+        >
+            <Box
+            >
+                <Typography
+                    component={"p"}
+                    variant="subtitle1"
+                    fontFamily={"Poppins Bold"}
+                    fontSize={15}
+                    width={150}
+                    sx={{
+                        color:"#224881"
+                    }}
+                >
+                    { description }
+                </Typography>
+            </Box>
+            <div>
+                <Typography
+                    component={"p"}
+                    variant="subtitle1"
+                    fontFamily={"Poppins Medium"}
+                    fontSize={15}
+                >
+                    { value }
+                </Typography>
+            </div>
+        </Stack>
     )
 }
 
@@ -112,7 +164,10 @@ function DetailsData(props:any){
                 <Typography
                     component={"p"}
                     variant="subtitle1"
-                    fontSize={12}
+                    fontSize={15}
+                    sx={{
+                        overflowWrap:"anywhere",
+                    }}
                 >
                     { value }
                 </Typography>
@@ -154,17 +209,17 @@ const DETAILS_DATA = [
         description:"Address ",
         value:"11A Mwaleshi Road, Olympia Park, Lusaka, Zambia"
     },
-    {
-        description:"Price ",
-        value:"ZMW 1"
-    },
-    {
-        description:"Charges ",
-        value:"ZMW 0.02"
-    },
-    {
-        description:"Order Total ",
-        value:"ZMW 1.02"
-    },
+    // {
+    //     description:"Price ",
+    //     value:"ZMW 1"
+    // },
+    // {
+    //     description:"Charges ",
+    //     value:"ZMW 0.02"
+    // },
+    // {
+    //     description:"Order Total ",
+    //     value:"ZMW 1.02"
+    // },
     
 ]

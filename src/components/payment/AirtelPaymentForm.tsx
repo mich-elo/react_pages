@@ -20,7 +20,9 @@ import { useRouter } from "next/router";
 
 // 
 import { stall } from "../utils/helpers";
-import { LoadingButton } from "../buttons/LoadingButtons";
+
+import { PayButton } from "../buttons/ActionButtons";
+import PhoneNumberInput from "../general/PhoneNumberInput";
 
 export default function AirtelPaymentForm(){
     const router = useRouter();
@@ -49,15 +51,7 @@ export default function AirtelPaymentForm(){
             <form onSubmit={formik.handleSubmit}>
 
                 <Box component={Stack} spacing={3}>
-                    <TextField 
-                        fullWidth
-                        label="Phone Number" 
-                        name="phoneNumber"
-                        variant="outlined" 
-                        autoComplete="off"
-                        InputProps={{
-                            startAdornment: <InputAdornment position="start">+260</InputAdornment>,
-                        }}
+                    <PhoneNumberInput
                         value={formik.values.phoneNumber}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -70,9 +64,8 @@ export default function AirtelPaymentForm(){
                     <Box sx={{ display:'flex' }}>
                         <Box sx={{ flexGrow:1 }}/>
                         <div>
-                            <LoadingButton
+                            <PayButton
                                 isLoading={formik.isSubmitting}
-                                text="Make Payment"
                             />
                         </div>
                     </Box>

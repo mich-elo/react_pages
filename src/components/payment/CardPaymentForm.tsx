@@ -15,7 +15,7 @@ import { Dayjs } from 'dayjs';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import HeadingText from '../general/HeadText';
-import { LoadingButton } from '../buttons/LoadingButtons';
+import { PayButton } from '../buttons/ActionButtons';
 import { useRouter } from 'next/router';
 import { stall } from '../utils/helpers';
 import PhoneNumberInput from '../general/PhoneNumberInput';
@@ -290,9 +290,8 @@ export default function CardPaymentForm(){
                     <Box sx={{ display:'flex' }}>
                         <Box sx={{ flexGrow:1 }}/>
                         <div>
-                            <LoadingButton
+                            <PayButton
                                 isLoading={formik.isSubmitting}
-                                text="Make Payment"
                             />
                         </div>
                     </Box>
